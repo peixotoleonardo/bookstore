@@ -11,7 +11,7 @@ export class CreateAuthorUseCase implements CreateAuthorPortIn {
   constructor(private readonly port: SaveAuthorPortOut) {}
 
   async execute(command: CreateAuthorCommand): Promise<CreateAuthorOutput> {
-    const author = await this.port.execute(
+    const author = await this.port.save(
       Author.newAuthor(command.name, command.description),
     );
 

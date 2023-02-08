@@ -1,6 +1,7 @@
 import Joi from 'joi';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { registerAs, ConfigType } from '@nestjs/config';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 const config = registerAs<TypeOrmModuleOptions>('typeorm', () => ({
   type: 'postgres',
@@ -8,6 +9,8 @@ const config = registerAs<TypeOrmModuleOptions>('typeorm', () => ({
   username: process.env.TYPEORM_USERNAME,
   password: process.env.TYPEORM_PASSWORD,
   database: process.env.TYPEORM_DATABASE,
+  autoLoadEntities: true,
+  namingStrategy: new SnakeNamingStrategy(),
 }));
 
 export default config;

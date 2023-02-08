@@ -1,5 +1,7 @@
 import { Author } from '@app/core/domain/author';
 
+export const SaveAuthorPortOut = Symbol();
+
 export interface SaveAuthorPortOut {
-  execute(author: Author): Promise<Author>;
+  save(author: Author): Promise<Author>;
 }

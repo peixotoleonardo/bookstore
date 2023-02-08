@@ -11,6 +11,10 @@ export class Identifier extends ValueObject {
     return new Identifier(randomUUID());
   }
 
+  static from(value: string) {
+    return new Identifier(value);
+  }
+
   getValue() {
     return this.value;
   }

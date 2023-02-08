@@ -19,6 +19,17 @@ export class Author extends AggregateRoot<Identifier> {
     return new Author(Identifier.unique(), name, description, now);
   }
 
+  static with(
+    id: Identifier,
+    name: string,
+    description: string,
+    createdAt: Date,
+    updatedAt?: Date,
+    deletedAt?: Date,
+  ) {
+    return new Author(id, name, description, createdAt, updatedAt, deletedAt);
+  }
+
   getName() {
     return this.name;
   }
