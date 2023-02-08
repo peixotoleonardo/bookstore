@@ -17,6 +17,7 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    "esModuleInterop": true,
     "paths": {
       "@bookstore/*": [
         "./src/*"
@@ -28,5 +29,8 @@
         "libs/core/src/*"
       ]
     }
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register", "dotenv/config"]
   }
 }
