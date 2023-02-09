@@ -26,8 +26,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     },
     {
       provide: CreateAuthorPortIn,
-      useFactory: (repository) => new CreateAuthorUseCase(repository),
-      inject: [AuthorRepository],
+      useFactory: (saveAuthorPortOut) =>
+        new CreateAuthorUseCase(saveAuthorPortOut),
+      inject: [SaveAuthorPortOut],
     },
   ],
 })

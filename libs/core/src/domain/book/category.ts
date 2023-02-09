@@ -1,11 +1,10 @@
-import { Identifier } from '@app/core/domain//identifier';
+import { Identifier } from '@app/core/domain/identifier';
 import { AggregateRoot } from '@app/core/domain/aggregate-root';
 
-export class Author extends AggregateRoot<Identifier> {
+export class Category extends AggregateRoot<Identifier> {
   private constructor(
     id: Identifier,
     private name: string,
-    private description: string,
     private createdAt: Date,
     private updatedAt?: Date,
     private deletedAt?: Date,
@@ -16,26 +15,19 @@ export class Author extends AggregateRoot<Identifier> {
   static with(
     id: Identifier,
     name: string,
-    description: string,
     createdAt: Date,
     updatedAt?: Date,
     deletedAt?: Date,
   ) {
-    return new Author(id, name, description, createdAt, updatedAt, deletedAt);
+    return new Category(id, name, createdAt, updatedAt, deletedAt);
   }
 
-  static newAuthor(name: string, description: string) {
-    const now = new Date();
-
-    return this.with(Identifier.unique(), name, description, now);
+  static newCategory(name: string) {
+    return this.with(Identifier.unique(), name, new Date());
   }
 
   getName() {
     return this.name;
-  }
-
-  getDescription() {
-    return this.description;
   }
 
   getCreatedAt() {
@@ -48,9 +40,5 @@ export class Author extends AggregateRoot<Identifier> {
 
   getDeletedAt() {
     return this.deletedAt;
-  }
-
-  isActive() {
-    return !!this.deletedAt;
   }
 }
